@@ -1,0 +1,53 @@
+			body{
+				margin-top: 50px;
+				background:url(../images/dinamica.jpg);
+				background-size: cover;
+			}
+			#pagetitle{
+				font-family: sans-serif;
+				text-align: center;
+				color: #FFFFFF;	
+			}
+
+			#pagesubtitle{
+				font-family: sans-serif;
+				margin-left: 40%;
+				color: #FFFFFF;
+			}
+
+			#apps{
+				font-family: sans-serif;
+				margin-left: 40%;
+				color: #000;
+			}
+
+			table{
+				border-collapse: collapse;
+				background-color: #FFFFFF;				
+			}
+			td.colContentTitle{
+				text-align: center;
+				background-color: #473C8B;
+				font-weight: bold;
+				color: #FFFFFF;
+			}
+			td.colPromptTitle{
+				padding-right: 50px;
+				padding-left: 50px;
+				text-align: center;
+				background-color: #473C8B;
+				font-weight: bold;
+				color: #FFFFFF;
+			}
+			td.colContent{				
+				text-align: left;				
+			}
+			td.colPromptName{				
+				padding-right: 50px;
+				padding-left: 50px;
+				text-align: center;				
+			}
+
+			label{
+				margin-top: 100px;
+			}
