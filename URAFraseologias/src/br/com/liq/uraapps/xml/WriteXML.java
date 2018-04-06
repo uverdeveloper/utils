@@ -8,28 +8,27 @@ import org.jdom.Element;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import br.com.liq.uraapps.bean.Phrases;
+
 public class WriteXML {
 
-	public WriteXML() {
-		// TODO Auto-generated constructor stub
-
+	public WriteXML(Phrases phrasesParam) {
+		
 		ReadXML readXML = new ReadXML();
 
 		readXML.readerXML();
 
-		// Adicionando linha no arquivo
-
 		Document document = readXML.readerXML();
 
 		Element rootElement = document.getRootElement();
-
+		
 		Element phrases = new Element("phrases");
 
-		Element promptName = new Element("promptName");
-		promptName.setText("0020.wav");
+		Element promptName = new Element("promptName").setAttribute("id", phrasesParam.getIdPromptName());
+		promptName.setText(phrasesParam.getPromptName());
 
-		Element description = new Element("description");
-		description.setText("Boa noite");
+		Element description = new Element("description");//.setAttribute("id", phrasesParam.getIdDescription());;
+		description.setText(phrasesParam.getDescription());
 
 		phrases.addContent(promptName);
 		phrases.addContent(description);

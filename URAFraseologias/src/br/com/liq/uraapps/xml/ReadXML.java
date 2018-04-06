@@ -14,6 +14,7 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
@@ -27,7 +28,8 @@ public class ReadXML {
 	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/phrases/phrase.xml";
 	private List<Phrases_Control> listPhrases_Control;
 
-	public Document readerXML() {
+	public Document readerXML() {		
+		
 		File file = new File(this.pathXmlFile);
 
 		setFileXml(file);
@@ -102,14 +104,23 @@ public class ReadXML {
 	    
 	    for(int i = 0; i < documentSize; i++){
 	    Node promptName= ((org.w3c.dom.Document) document).getElementsByTagName("promptName").item(i);
+	    Element idPromptName = (Element) document.getElementsByTagName("promptName").item(i);
 	    Node description= ((org.w3c.dom.Document) document).getElementsByTagName("description").item(i);
+	    Element idDescription = (Element) document.getElementsByTagName("description").item(i);
 	    
 	    Phrases_Control phrases_Control = new Phrases_Control();
 	    Phrases phrases = new Phrases();
 	    
+	    
 	    phrases.setPromptName(promptName.getTextContent());
-	    phrases.setDescription(description.getTextContent());	    
+	    phrases.setIdPromptName(idPromptName.getAttribute("id"));
+	    phrases.setDescription(description.getTextContent());
+	    phrases.setIdDescription(idDescription.getAttribute("id"));	    
+	   
+	    phrases.setIdUpdate(String.valueOf(documentSize + 1));
+	    
 	    phrases_Control.setPhrases(phrases);
+	    
 	    listBean.add(phrases_Control);
 	    }
 	    

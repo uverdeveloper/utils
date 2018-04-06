@@ -2,8 +2,27 @@ package br.com.liq.uraapps.bean;
 
 public class Phrases {
 
-	String promptName = "";
-	String description = "";
+	private String idPromptName = "";
+	private String idDescription = "";
+	private String promptName = "";
+	private String description = "";
+	private String idUpdate = "";
+
+	public String getIdPromptName() {
+		return idPromptName;
+	}
+
+	public void setIdPromptName(String idPromptName) {
+		this.idPromptName = idPromptName;
+	}
+
+	public String getIdDescription() {
+		return idDescription;
+	}
+
+	public void setIdDescription(String idDescription) {
+		this.idDescription = idDescription;
+	}
 
 	public String getPromptName() {
 		return promptName;
@@ -21,9 +40,18 @@ public class Phrases {
 		this.description = description;
 	}
 
+	public String getIdUpdate() {
+		return idUpdate;
+	}
+
+	public void setIdUpdate(String idUpdate) {
+		this.idUpdate = idUpdate;
+	}
+
 	@Override
 	public String toString() {
-		return "Phrases [promptName=" + promptName + ", description=" + description + "]";
+		return "Phrases [idPromptName=" + idPromptName + ", idDescription=" + idDescription + ", promptName="
+				+ promptName + ", description=" + description + ", idUpdate=" + idUpdate + "]";
 	}
 
 }

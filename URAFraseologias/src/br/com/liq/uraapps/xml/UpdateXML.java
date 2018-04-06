@@ -16,9 +16,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+import br.com.liq.uraapps.bean.Phrases;
+
 public class UpdateXML {
 
-	public UpdateXML() {
+	public UpdateXML(Phrases phrasesParam, int item) {
 
 		ReadXML readXML = new ReadXML();
 
@@ -32,11 +34,11 @@ public class UpdateXML {
 			try {
 				Document doc = docBuilder.parse(xml);
 
-				Node promptName = doc.getElementsByTagName("promptName").item(0);
-				Node description = doc.getElementsByTagName("description").item(0);
+				Node promptName = doc.getElementsByTagName("promptName").item(item);
+				Node description = doc.getElementsByTagName("description").item(item);
 
-				promptName.setTextContent("0003.wav");
-				description.setTextContent("Uver bonitão");
+				promptName.setTextContent(phrasesParam.getPromptName());
+				description.setTextContent(phrasesParam.getDescription());
 
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
@@ -44,7 +46,7 @@ public class UpdateXML {
 				StreamResult result = new StreamResult(new File(xml.toString()));
 				transformer.transform(source, result);
 
-				System.out.println("Tag atualizada");
+				//System.out.println("Tag atualizada.");
 
 			} catch (SAXException | IOException | TransformerException e) {
 				// TODO Auto-generated catch block

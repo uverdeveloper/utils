@@ -1,3 +1,5 @@
+var idUpdate;
+
 function init() {
 		
 	var option = $("#apps").val();
@@ -14,20 +16,25 @@ function init() {
 						tableHead();
 						$.each(data, function(index, value) {
 							
+							idUpdate = data[index].phrases.idUpdate;
+							
 							$("tbody").append(
 											"<tr>"
+												+ "<td>" + data[index].phrases.idPromptName + "</td>"
 												+ "<td>" + data[index].phrases.promptName + "</td>"
 												+ "<td>" + data[index].phrases.description + "</td>" 
+												+ "<td><button id=\"btnUpdate\" onclick=\"updateScreen()\">Atualizar</button>"
+												+ "<td><button id=\"btnDelete\" onclick=\"delete\">Apagar</button>"
 											+ "</tr>")
 						})
 					},
 					error : function() {
-						/*$("body").append(
-								"<div id=\"noData\">"
+						$("body").append(
+								"<div>"
 										+ "<p>"
-										+ "<label for=\"databaseEmpty\" id=\"mensagem\">Cadastre uma aplicação.</label>"
+										+ "<label for=\"databaseEmpty\" id=\"mensagem\">Internal error.</label>"
 										+ "</p>"
-										+ "</div>")*/
+										+ "</div>")
 					}
 				});
 
@@ -40,11 +47,80 @@ function tableHead(){
 			"<table id=\"idTable\" border=\"2\">"
 				+"<thead>"
 					+"<tr>"
+						+"<th class=\"colPromptTitle\">ID</th>"
 						+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
 						+"<th class=\"colContentTitle\">CONTEUDO</th>"
+						+"<th class=\"colContentTitle\" colspan=\"2\">AÇÕES</th>"
 					+"</tr>"
 				+"</thead>"
 			+"<tbody>"
+			+"</tbody>"
+		+"</table>"
+	)
+}
+
+function promptNewRegsiter(){
+	$("#idTable").append(
+			"<table id=\"idTableRegistrer\" border=\"2\">"
+				+"<thead>"
+					+"<tr>"
+						+"<th class=\"colPromptTitle\">ID</th>"
+						+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
+						+"<th class=\"colContentTitle\">CONTEUDO</th>"
+						+"<th class=\"colContentTitle\" colspan=\"2\">AÇÕES</th>"
+					+"</tr>"
+				+"</thead>"
+				+"<tbody>"
+					+"<tr>"
+						+"<td>"
+							+"<input id=\"positionPromptName\" type=\"text\"></input>" 
+						+"</td>"
+						+"<td>"
+							+"<input id=\"idPromptName\" type=\"text\"></input>" 
+						+"</td>"	
+						+"<td>"
+							+"<input id=\"idDescription\"type=\"text\"></input>" 
+					+"</td>"				
+						+"<td>"
+							+"<button id=\"btnCadastrarNovo\" onclick=\"register()\">Inserir</button>" 
+						+"</td>"
+					+"</tr>"
+				+"</tbody>"
+			+"</table>"
+		)
+	
+}
+
+function updateScreen(){
+	
+	$("#idTable").empty();
+	$("#idTableRegistrer").empty();
+	
+	$("#idTable").append(
+	   "<table id=\"idTableUpdate\" border=\"2\">"
+		+"<thead>"
+			+"<tr>"
+				+"<th class=\"colPromptTitle\">ID</th>"
+				+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
+				+"<th class=\"colContentTitle\">CONTEUDO</th>"
+				+"<th class=\"colContentTitle\" colspan=\"2\">AÇÕES</th>"
+			+"</tr>"
+		+"</thead>"
+		+"<tbody>"
+			+"<tr>"
+				+"<td>"
+					+"<input id=\"positionPromptName\" type=\"text\"></input>" 
+				+"</td>"
+				+"<td>"
+					+"<input id=\"idPromptName\" type=\"text\"></input>" 
+				+"</td>"	
+				+"<td>"
+					+"<input id=\"idDescription\"type=\"text\"></input>" 
+				+"</td>"				
+				+"<td>"
+					+"<button id=\"btnCadastrarNovo\" onclick=\"update()\">Confirmar</button>" 
+					+"</td>"
+				+"</tr>"
 			+"</tbody>"
 		+"</table>"
 	)

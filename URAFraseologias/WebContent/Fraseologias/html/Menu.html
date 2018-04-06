@@ -6,7 +6,8 @@
 		<!-- JQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<!-- <script src="../js/app.js"></script> -->
-		<script src="../js/screen/filters.js"></script>		
+		<script src="../js/screen/filters.js"></script>
+		<script src="../js/crud/actions.js"></script>		
 		<title>Controle das nomeclaturas de prompts das URA's</title>
 	</head>
 	<body>
@@ -21,6 +22,10 @@
 				<option value="oidigitalcontrole">Oi Digital Controle</option>
 			</select>
 			<button onclick="init(this)">Exibir</button>
+			<br />
+			<br />
+			<label id="cadastrar">Cadastrar novo prompt:</label>			
+			<button id="btnCadastrar" onclick="promptNewRegsiter()">Cadastrar novo</button>
 			<div id="idTable">
 			</div>
 		<br />
