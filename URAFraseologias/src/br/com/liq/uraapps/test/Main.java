@@ -6,13 +6,16 @@ import br.com.liq.uraapps.xml.UpdateXML;
 public class Main {
 
 	public static void main(String[] args){
+			
+		Phrases p = new Phrases();
 		
-		Phrases phrasesParam = new Phrases();
+		p.setIdPromptName("18");
+		p.setPromptName("Y");
+		p.setDescription("X");
 		
-		phrasesParam.setPromptName("0002.wav");
-		phrasesParam.setDescription("Mais um momento.");
+		UpdateXML updateXML = new UpdateXML(p, 18);
 		
-		UpdateXML updateXML = new UpdateXML(phrasesParam, 1);
+		//DeleteTagXML deleteTagXML = new DeleteTagXML(p , 18);
 		
 	}
 }

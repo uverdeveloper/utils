@@ -71,6 +71,38 @@ function update(){
 	}
 }
 
+function deletePrompt(){
+	
+	var option = $("#apps").val();
+	
+	if (option == "avi") {	
+	
+	var data = {
+			"idPromptName" : $("#positionPromptName").val(),
+			};
+	
+			json = JSON.stringify(data);
+	
+					$.ajax({
+							type : "DELETE",
+							url : "http://localhost:8082/URAFraseologias/rest/menu/",
+							dataType : "text",
+							contentType : "application/json; charset=utf-8",
+							data : json,
+							success : function(result) {								
+								alert('Prompt deletado com sucesso.')
+								},
+							error : function(erro) {
+								$("body").append(
+										"<div>"
+										+ "<p>"
+										+ "<label for=\"databaseEmpty\" id=\"mensagem\">Prompt não atualizado.</label>"
+										+ "</p>"
+										+ "</div>")
+								}
+							});
+						}
+					}
 
 
 	

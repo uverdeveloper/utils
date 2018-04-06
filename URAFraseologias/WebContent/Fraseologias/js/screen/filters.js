@@ -24,7 +24,7 @@ function init() {
 												+ "<td>" + data[index].phrases.promptName + "</td>"
 												+ "<td>" + data[index].phrases.description + "</td>" 
 												+ "<td><button id=\"btnUpdate\" onclick=\"updateScreen()\">Atualizar</button>"
-												+ "<td><button id=\"btnDelete\" onclick=\"delete\">Apagar</button>"
+												+ "<td><button id=\"btnDelete\" onclick=\"deleteScreen()\">Apagar</button>"
 											+ "</tr>")
 						})
 					},
@@ -60,6 +60,7 @@ function tableHead(){
 }
 
 function promptNewRegsiter(){
+	$("#idTable").empty();
 	$("#idTable").append(
 			"<table id=\"idTableRegistrer\" border=\"2\">"
 				+"<thead>"
@@ -119,6 +120,34 @@ function updateScreen(){
 				+"</td>"				
 				+"<td>"
 					+"<button id=\"btnCadastrarNovo\" onclick=\"update()\">Confirmar</button>" 
+					+"</td>"
+				+"</tr>"
+			+"</tbody>"
+		+"</table>"
+	)
+}
+
+function deleteScreen(){
+	
+	$("#idTable").empty();
+	$("#idTableRegistrer").empty();
+	$("#idTableUpdate").empty();
+	
+	$("#idTable").append(
+	   "<table id=\"idTableDelete\" border=\"2\">"
+		+"<thead>"
+			+"<tr>"
+				+"<th class=\"colPromptTitle\">ID</th>"
+				+"<th class=\"colContentTitle\" colspan=\"2\">AÇÕES</th>"
+			+"</tr>"
+		+"</thead>"
+		+"<tbody>"
+			+"<tr>"
+				+"<td>"
+					+"<input id=\"positionPromptName\" type=\"text\"></input>" 
+				+"</td>"				
+				+"<td>"
+					+"<button id=\"btnCadastrarNovo\" onclick=\"deletePrompt()\">Confirmar</button>" 
 					+"</td>"
 				+"</tr>"
 			+"</tbody>"

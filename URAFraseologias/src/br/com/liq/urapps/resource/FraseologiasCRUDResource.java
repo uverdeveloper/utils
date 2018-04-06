@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -14,6 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.liq.uraapps.bean.Phrases;
 import br.com.liq.uraapps.bean.Phrases_Control;
+import br.com.liq.uraapps.xml.DeleteTagXML;
 import br.com.liq.uraapps.xml.ReadXML;
 import br.com.liq.uraapps.xml.UpdateXML;
 import br.com.liq.uraapps.xml.WriteXML;
@@ -59,6 +61,15 @@ public class FraseologiasCRUDResource {
 		
 	}
 	
-	
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public void deletePrompt(Phrases phrases){
+		
+		int item = Integer.parseInt(phrases.getIdPromptName());
+		
+		DeleteTagXML updateXML = new DeleteTagXML(phrases, item-1);
+		
+	}
 	
 }
