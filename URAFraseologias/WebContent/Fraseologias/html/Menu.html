@@ -16,16 +16,25 @@
 			<label id="pagesubtitle">Selecione a aplicação de URA:</label>
 			<br />
 			<br />
-			<select id="apps" align="center">
-				<option value="----" disabled selected>-----</option>
+			<select id="apps">
+				<option value="----" disabled selected>----</option>
 				<option value="avi">AVI</option>
 				<option value="oidigitalcontrole">Oi Digital Controle</option>
 			</select>
-			<button onclick="init(this)">Exibir</button>
+			<button onclick="promptDescriptionLoad()">Exibir</button>
 			<br />
 			<br />
-			<label id="cadastrar">Cadastrar novo prompt:</label>			
-			<button id="btnCadastrar" onclick="promptNewRegsiter()">Cadastrar novo</button>
+			<label id="cadastrar">Menu de ações:</label>
+			<br />
+			<br />
+			<select id="actionMenu">
+				<option value="----" disabled selected>-----</option>
+				<option value="inserir">inserir</option>
+				<option value="atualizar">atualizar</option>
+				<option value="deletar">deletar</option>
+			</select>
+			<button onclick="actionMenuLoad(this)">Escolher</button>
+			<br />			
 			<div id="idTable">
 			</div>
 		<br />

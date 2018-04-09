@@ -1,6 +1,6 @@
 var idUpdate;
 
-function init() {
+function promptDescriptionLoad(){
 		
 	var option = $("#apps").val();
 	
@@ -21,10 +21,8 @@ function init() {
 							$("tbody").append(
 											"<tr>"
 												+ "<td>" + data[index].phrases.idPromptName + "</td>"
-												+ "<td>" + data[index].phrases.promptName + "</td>"
-												+ "<td>" + data[index].phrases.description + "</td>" 
-												+ "<td><button id=\"btnUpdate\" onclick=\"updateScreen()\">Atualizar</button>"
-												+ "<td><button id=\"btnDelete\" onclick=\"deleteScreen()\">Apagar</button>"
+												+ "<td class=\"colPromptName\">" + data[index].phrases.promptName + "</td>"
+												+ "<td class=\"colPromptContent\">" + data[index].phrases.description + "</td>"
 											+ "</tr>")
 						})
 					},
@@ -44,13 +42,15 @@ function init() {
 function tableHead(){
 	$("#idTable").empty();
 	$("#idTable").append(
-			"<table id=\"idTable\" border=\"2\">"
+			"<h1>Descrição dos prompts da aplicação:</h1>"
+			+"<br />"
+			+"<br />"
+			+"<table id=\"idTable\" border=\"2\">"
 				+"<thead>"
 					+"<tr>"
 						+"<th class=\"colPromptTitle\">ID</th>"
 						+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
-						+"<th class=\"colContentTitle\">CONTEUDO</th>"
-						+"<th class=\"colContentTitle\" colspan=\"2\">AÇÕES</th>"
+						+"<th class=\"colContentTitle\" colspan=\"2\">CONTEUDO</th>"
 					+"</tr>"
 				+"</thead>"
 			+"<tbody>"
@@ -59,28 +59,46 @@ function tableHead(){
 	)
 }
 
+function actionMenuLoad(){
+	
+	var option = $("#actionMenu").val();
+	
+	if (option == "inserir") {
+		promptNewRegsiter();
+	} else if(option == "atualizar"){
+		updateScreen();
+	} else if(option == "deletar"){
+		deleteScreen();
+	} else{
+		alert('ESCOLHA UMA OPÇÃO VÁLIDA.')
+	}
+	
+}
+
 function promptNewRegsiter(){
 	$("#idTable").empty();
 	$("#idTable").append(
-			"<table id=\"idTableRegistrer\" border=\"2\">"
+			"<h1>Cadastrar nova descrição:</h1>"
+			+"<br />"
+			+"<br />"
+			+"<table id=\"idTableRegistrer\" border=\"2\">"
 				+"<thead>"
 					+"<tr>"
 						+"<th class=\"colPromptTitle\">ID</th>"
 						+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
-						+"<th class=\"colContentTitle\">CONTEUDO</th>"
-						+"<th class=\"colContentTitle\" colspan=\"2\">AÇÕES</th>"
+						+"<th class=\"colContentTitle\" colspan=\"2\">CONTEUDO</th>"
 					+"</tr>"
 				+"</thead>"
 				+"<tbody>"
 					+"<tr>"
 						+"<td>"
-							+"<input id=\"positionPromptName\" type=\"text\"></input>" 
+							+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
 						+"</td>"
 						+"<td>"
-							+"<input id=\"idPromptName\" type=\"text\"></input>" 
+							+"<input id=\"idPromptName\" onkeyup=\"regexPromptName(this);\" type=\"text\"></input>" 
 						+"</td>"	
 						+"<td>"
-							+"<input id=\"idDescription\"type=\"text\"></input>" 
+							+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
 					+"</td>"				
 						+"<td>"
 							+"<button id=\"btnCadastrarNovo\" onclick=\"register()\">Inserir</button>" 
@@ -98,25 +116,27 @@ function updateScreen(){
 	$("#idTableRegistrer").empty();
 	
 	$("#idTable").append(
-	   "<table id=\"idTableUpdate\" border=\"2\">"
-		+"<thead>"
+		"<h1>Atualização dos prompts:</h1>"
+		+"<br />"
+		+"<br />"
+		+"<table id=\"idTableUpdate\" border=\"2\">"
+		 +"<thead>"
 			+"<tr>"
 				+"<th class=\"colPromptTitle\">ID</th>"
 				+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
-				+"<th class=\"colContentTitle\">CONTEUDO</th>"
-				+"<th class=\"colContentTitle\" colspan=\"2\">AÇÕES</th>"
+				+"<th class=\"colContentTitle\" colspan=\"2\">CONTEUDO</th>"
 			+"</tr>"
 		+"</thead>"
 		+"<tbody>"
 			+"<tr>"
 				+"<td>"
-					+"<input id=\"positionPromptName\" type=\"text\"></input>" 
+					+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
 				+"</td>"
 				+"<td>"
-					+"<input id=\"idPromptName\" type=\"text\"></input>" 
+					+"<input id=\"idPromptName\" onkeyup=\"regexPromptName(this);\" type=\"text\"></input>" 
 				+"</td>"	
 				+"<td>"
-					+"<input id=\"idDescription\"type=\"text\"></input>" 
+					+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
 				+"</td>"				
 				+"<td>"
 					+"<button id=\"btnCadastrarNovo\" onclick=\"update()\">Confirmar</button>" 
@@ -134,17 +154,19 @@ function deleteScreen(){
 	$("#idTableUpdate").empty();
 	
 	$("#idTable").append(
-	   "<table id=\"idTableDelete\" border=\"2\">"
+		"<h1>Exclusão da descrição dos prompts:</h1>"
+		+"<br />"
+		+"<br />"
+	    +"<table id=\"idTableDelete\" border=\"2\">"
 		+"<thead>"
 			+"<tr>"
-				+"<th class=\"colPromptTitle\">ID</th>"
-				+"<th class=\"colContentTitle\" colspan=\"2\">AÇÕES</th>"
+				+"<th class=\"colPromptTitle\" colspan=\"2\">ID</th>"
 			+"</tr>"
 		+"</thead>"
 		+"<tbody>"
 			+"<tr>"
 				+"<td>"
-					+"<input id=\"positionPromptName\" type=\"text\"></input>" 
+					+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\></input>" 
 				+"</td>"				
 				+"<td>"
 					+"<button id=\"btnCadastrarNovo\" onclick=\"deletePrompt()\">Confirmar</button>" 
@@ -153,4 +175,34 @@ function deleteScreen(){
 			+"</tbody>"
 		+"</table>"
 	)
+}
+
+function regexId(num) {
+	var er = /[^0-9]/;
+	er.lastIndex = 0;
+	var campo = num;
+
+	if (er.test(campo.value)) {
+		campo.value = "";
+	}
+}
+
+function regexPromptName(str) {
+    var er = /[^0-9a-z.]/;
+	er.lastIndex = 0;
+	var campo = str;
+
+	if (er.test(campo.value)) {
+		campo.value = "";
+	}
+}
+
+function regexDescription(str) {
+    var er = /[^A-Za-z.!?"* ]/;
+	er.lastIndex = 0;
+	var campo = str;
+
+	if (er.test(campo.value)) {
+		campo.value = "";
+	}
 }
