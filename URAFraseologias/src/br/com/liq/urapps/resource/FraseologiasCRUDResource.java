@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -16,6 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import br.com.liq.uraapps.bean.Phrases;
 import br.com.liq.uraapps.bean.Phrases_Control;
 import br.com.liq.uraapps.xml.DeleteTagXML;
+import br.com.liq.uraapps.xml.GenerateXML;
 import br.com.liq.uraapps.xml.ReadXML;
 import br.com.liq.uraapps.xml.UpdateXML;
 import br.com.liq.uraapps.xml.WriteXML;
@@ -24,19 +26,25 @@ import br.com.liq.uraapps.xml.WriteXML;
 @Path("/menu")
 public class FraseologiasCRUDResource {
 
+	//Utilizar no cadastramento de uma nova aplicação
+	/*@POST
+	@Path("/newApplicationRegister/{appName}")
+	public void newApplicationRegister(@PathParam ("appName") String appName){
+		GenerateXML generateXML = new GenerateXML();
+		generateXML.createXML(appName);
+	}*/
+	
 	@GET
-	@Path("/optionsLoad")
+	@Path("/optionsLoad/{appName}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Phrases_Control> loadOptions() {
+	public List<Phrases_Control> loadOptions(@PathParam ("appName") String appName) {
 
-		ReadXML xml = new ReadXML();
+		ReadXML xml = new ReadXML(appName);
 
 		xml.readerXML();
 
 		List<Phrases_Control> list = new ArrayList<Phrases_Control>();
 		list = xml.getListPhrases_Control();
-
-		System.out.println("List " + list);
 		
 		return list;
 	}
@@ -46,7 +54,7 @@ public class FraseologiasCRUDResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public void promptRegister(Phrases phrases){
 			
-		WriteXML writeXML = new WriteXML(phrases);
+		WriteXML writeXML = new WriteXML(phrases, phrases.getAppName());
 		
 	}
 	
@@ -57,7 +65,7 @@ public class FraseologiasCRUDResource {
 		
 		int item = Integer.parseInt(phrases.getIdPromptName());
 		
-		UpdateXML updateXML = new UpdateXML(phrases, item-1);
+		UpdateXML updateXML = new UpdateXML(phrases, item-1, phrases.getAppName());
 		
 	}
 	
@@ -68,7 +76,7 @@ public class FraseologiasCRUDResource {
 		
 		int item = Integer.parseInt(phrases.getIdPromptName());
 		
-		DeleteTagXML updateXML = new DeleteTagXML(phrases, item-1);
+		DeleteTagXML updateXML = new DeleteTagXML(phrases, item-1, phrases.getAppName());
 		
 	}
 	

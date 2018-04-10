@@ -11,13 +11,22 @@
 			}
 
 			#pagesubtitle,#cadastrar{
-				margin-left: 40%;
 				color: #FFFFFF;
 			}
 
-			#apps,#actionMenu{
-				margin-left: 40%;
-				color: #000;
+			#div1{
+			width: 520px;
+			}
+	
+			#appMenu{
+			width: 240px;
+			float: left;
+			}
+			
+			#actionsMenu{
+			margin-left: 20px;
+			width: 220px;
+			float: left;
 			}
 
 			table{
@@ -56,4 +65,15 @@
 			h1{
 				text-align: center;
 				color: #FFFFFF;	
-			}			
+			}		
+			
+			#mensagem{
+				color: red;
+			}
+			
+			#appsName{
+				margin-right: 5px;
+				width: 120px;
+				float: left;
+			}
+			

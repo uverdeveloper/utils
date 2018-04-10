@@ -1,13 +1,36 @@
 /**
  * 
  */
+
+function newApplicationRegister(){
+	
+	var appName = $("#appName").val();
+	
+			$.ajax({
+				type : "POST",
+				url : "http://localhost:8082/URAFraseologias/rest/menu/optionsLoad/newApplicationRegister/"+appName,
+				contentType : "application/json; charset=UTF-8",
+				success : function() {
+					alert('Aplicação cadastrada!!!');
+				},
+					
+				error : function() {
+					$("body").append(
+							"<div>"
+								+ "<p>"
+								+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
+								+ "</p>"
+								+ "</div>")
+								}
+				});
+			}
+
 function register(){
 	
 	var option = $("#apps").val();
 	
-	if (option == "avi") {	
-	
 	var data = {
+			"appName" : $("#apps").val(),
 			"idPromptName" : $("#positionPromptName").val(),
 			"promptName" : $("#idPromptName").val(),
 			"description" : $("#idDescription").val(),
@@ -28,21 +51,19 @@ function register(){
 								$("body").append(
 										"<div>"
 										+ "<p>"
-										+ "<label for=\"databaseEmpty\" id=\"mensagem\">Prompt não cadastrado.</label>"
+										+ "<label for=\"msg\" id=\"mensagem\">Prompt não cadastrado.</label>"
 										+ "</p>"
 										+ "</div>")
 								}
 							});
-	}
-}
+						}
 
 function update(){
 	
 	var option = $("#apps").val();
 	
-	if (option == "avi") {	
-	
 	var data = {
+			"appName" : $("#apps").val(),
 			"idPromptName" : $("#positionPromptName").val(), 
 			"promptName" : $("#idPromptName").val(),
 			"description" : $("#idDescription").val(),
@@ -63,21 +84,19 @@ function update(){
 								$("body").append(
 										"<div>"
 										+ "<p>"
-										+ "<label for=\"databaseEmpty\" id=\"mensagem\">Prompt não atualizado.</label>"
+										+ "<label for=\"msg\" id=\"mensagem\">Prompt não atualizado.</label>"
 										+ "</p>"
 										+ "</div>")
 								}
 							});
-	}
-}
+						}
 
 function deletePrompt(){
 	
-	var option = $("#apps").val();
-	
-	if (option == "avi") {	
+	var option = $("#apps").val();	
 	
 	var data = {
+			"appName" : $("#apps").val(),
 			"idPromptName" : $("#positionPromptName").val(),
 			};
 	
@@ -96,13 +115,12 @@ function deletePrompt(){
 								$("body").append(
 										"<div>"
 										+ "<p>"
-										+ "<label for=\"databaseEmpty\" id=\"mensagem\">Prompt não atualizado.</label>"
+										+ "<label for=\"msg\" id=\"mensagem\">Prompt não atualizado.</label>"
 										+ "</p>"
 										+ "</div>")
 								}
 							});
 						}
-					}
 
 
 	

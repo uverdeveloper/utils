@@ -1,4 +1,4 @@
-package br.com.liq.uraapps.xml;
+package br.com.liq.uraapps.xml.cadastrarapp;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,28 +14,22 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-import br.com.liq.uraapps.bean.Phrases;
-import br.com.liq.uraapps.bean.Phrases_Control;
+import br.com.liq.uraapps.bean.MenuApp;
+import br.com.liq.uraapps.bean.MenuApp_Control;
 
-public class ReadXML {
+public class ReadMenuAppXML {
 
 	private File fileXml;
 	private String xmlContent;
-	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/phrases/";
-	private List<Phrases_Control> listPhrases_Control;
-	private String appName = "";
-
-	public ReadXML(String appName) {
-		this.appName = appName;
-	}
+	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/menu/apps.xml";
+	private List<MenuApp_Control> listMenuApp_Control;
 
 	public Document readerXML() {		
 		
-		File file = new File(this.pathXmlFile+appName+".xml");
+		File file = new File(this.pathXmlFile);
 
 		setFileXml(file);
 		
@@ -80,7 +74,7 @@ public class ReadXML {
 		this.xmlContent = xmlContent;
 	}
 
-	public List<Phrases_Control> getListPhrases_Control() {
+	public List<MenuApp_Control> getListMenuApp_Control() {
 		
 		this.readerXML();
 		
@@ -103,35 +97,26 @@ public class ReadXML {
 			e.printStackTrace();
 		}
 	    	    
-	    List<Phrases_Control> listBean = new ArrayList<Phrases_Control>();
+	    List<MenuApp_Control> listBean = new ArrayList<MenuApp_Control>();
 	    
-	    int documentSize = ((org.w3c.dom.Document) document).getElementsByTagName("promptName").getLength();
+	    int documentSize = ((org.w3c.dom.Document) document).getElementsByTagName("appName").getLength();
 	    
 	    for(int i = 0; i < documentSize; i++){
-	    Node promptName= ((org.w3c.dom.Document) document).getElementsByTagName("promptName").item(i);
-	    Element idPromptName = (Element) document.getElementsByTagName("promptName").item(i);
-	    Node description= ((org.w3c.dom.Document) document).getElementsByTagName("description").item(i);
-	    Element idDescription = (Element) document.getElementsByTagName("description").item(i);
+	    Node promptName= ((org.w3c.dom.Document) document).getElementsByTagName("appName").item(i);
 	    
-	    Phrases_Control phrases_Control = new Phrases_Control();
-	    Phrases phrases = new Phrases();
+	    MenuApp_Control menuApp_Control = new MenuApp_Control();
+	    MenuApp menuApp = new MenuApp();
+	     
+	    menuApp.setAppName(promptName.getTextContent());    
+	  
+	    menuApp_Control.setMenuApp(menuApp);
 	    
-	    
-	    phrases.setPromptName(promptName.getTextContent());
-	    phrases.setIdPromptName(idPromptName.getAttribute("id"));
-	    phrases.setDescription(description.getTextContent());
-	    phrases.setIdDescription(idDescription.getAttribute("id"));	    
-	   
-	    phrases.setIdUpdate(String.valueOf(documentSize + 1));
-	    
-	    phrases_Control.setPhrases(phrases);
-	    
-	    listBean.add(phrases_Control);
+	    listBean.add(menuApp_Control);
 	    }
 	    
-	    listPhrases_Control = listBean;
+	    listMenuApp_Control = listBean;
 	    
-		return listPhrases_Control;
+		return listMenuApp_Control;
 	}
 	
 	

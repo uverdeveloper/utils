@@ -2,15 +2,14 @@ var idUpdate;
 
 function promptDescriptionLoad(){
 		
-	var option = $("#apps").val();
+	/*var option = $("#apps").val();*/
+	var option = $("#appsName").val();
 	
-	$("#idTable").empty();
-
-	if (option == "avi") {		
+	$("#idTable").empty();	
 
 		$.ajax({
 					type : "GET",
-					url : "http://localhost:8082/URAFraseologias/rest/menu/optionsLoad/",
+					url : "http://localhost:8082/URAFraseologias/rest/menu/optionsLoad/"+option,
 					contentType : "application/json; charset=UTF-8",
 					success : function(data) {
 						tableHead();
@@ -30,13 +29,11 @@ function promptDescriptionLoad(){
 						$("body").append(
 								"<div>"
 										+ "<p>"
-										+ "<label for=\"databaseEmpty\" id=\"mensagem\">Internal error.</label>"
+										+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
 										+ "</p>"
 										+ "</div>")
 					}
 				});
-
-	}
 }
 
 function tableHead(){
@@ -63,7 +60,9 @@ function actionMenuLoad(){
 	
 	var option = $("#actionMenu").val();
 	
-	if (option == "inserir") {
+	if(option == "cadastrar"){
+		newApplicationRegister();
+	} else if (option == "inserir") {
 		promptNewRegsiter();
 	} else if(option == "atualizar"){
 		updateScreen();
@@ -71,14 +70,34 @@ function actionMenuLoad(){
 		deleteScreen();
 	} else{
 		alert('ESCOLHA UMA OPÇÃO VÁLIDA.')
-	}
-	
+	}	
+}
+
+function newApplicationRegister(){
+	$("#idTable").empty();
+	$("#idTable").append(
+			"<h1>Cadastrar aplicação:</h1>"
+			+"<br />"
+			+"<br />"
+			+"<table id=\"idTableNewAppRegistrer\" border=\"2\">"
+				+"<tbody>"
+					+"<tr>"
+						+"<td>"
+							+"<input id=\"appName\" onkeyup=\"regexPromptName(this);\"></input>" 
+						+"</td>"			
+						+"<td>"
+							+"<button id=\"btnAppRegister\" onclick=\"newApplicationRegister()\">Cadastrar</button>" 
+						+"</td>"
+					+"</tr>"
+				+"</tbody>"
+			+"</table>"
+	)
 }
 
 function promptNewRegsiter(){
 	$("#idTable").empty();
 	$("#idTable").append(
-			"<h1>Cadastrar nova descrição:</h1>"
+			"<h1>Cadastrar novo prompt:</h1>"
 			+"<br />"
 			+"<br />"
 			+"<table id=\"idTableRegistrer\" border=\"2\">"
@@ -101,7 +120,7 @@ function promptNewRegsiter(){
 							+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
 					+"</td>"				
 						+"<td>"
-							+"<button id=\"btnCadastrarNovo\" onclick=\"register()\">Inserir</button>" 
+							+"<button id=\"btnRegister\" onclick=\"register()\">Inserir</button>" 
 						+"</td>"
 					+"</tr>"
 				+"</tbody>"
@@ -139,7 +158,7 @@ function updateScreen(){
 					+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
 				+"</td>"				
 				+"<td>"
-					+"<button id=\"btnCadastrarNovo\" onclick=\"update()\">Confirmar</button>" 
+					+"<button id=\"btnUpdate\" onclick=\"update()\">Confirmar</button>" 
 					+"</td>"
 				+"</tr>"
 			+"</tbody>"
@@ -166,19 +185,19 @@ function deleteScreen(){
 		+"<tbody>"
 			+"<tr>"
 				+"<td>"
-					+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\></input>" 
+					+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
 				+"</td>"				
 				+"<td>"
-					+"<button id=\"btnCadastrarNovo\" onclick=\"deletePrompt()\">Confirmar</button>" 
-					+"</td>"
-				+"</tr>"
-			+"</tbody>"
+					+"<button id=\"btnDelete\" onclick=\"deletePrompt()\">Confirmar</button>" 
+				+"</td>"
+			+"</tr>"
+		+"</tbody>"
 		+"</table>"
 	)
 }
 
 function regexId(num) {
-	var er = /[^0-9]/;
+	var er = /[^0-9 ]/;
 	er.lastIndex = 0;
 	var campo = num;
 
@@ -198,7 +217,7 @@ function regexPromptName(str) {
 }
 
 function regexDescription(str) {
-    var er = /[^A-Za-z.!?"* ]/;
+    var er = /[^A-Za-z.,!?"* ]/;
 	er.lastIndex = 0;
 	var campo = str;
 

@@ -12,9 +12,9 @@ import br.com.liq.uraapps.bean.Phrases;
 
 public class WriteXML {
 
-	public WriteXML(Phrases phrasesParam) {
+	public WriteXML(Phrases phrasesParam, String appName) {
 		
-		ReadXML readXML = new ReadXML();
+		ReadXML readXML = new ReadXML(appName);
 
 		readXML.readerXML();
 
@@ -27,7 +27,7 @@ public class WriteXML {
 		Element promptName = new Element("promptName").setAttribute("id", phrasesParam.getIdPromptName());
 		promptName.setText(phrasesParam.getPromptName());
 
-		Element description = new Element("description");//.setAttribute("id", phrasesParam.getIdDescription());;
+		Element description = new Element("description");
 		description.setText(phrasesParam.getDescription());
 
 		phrases.addContent(promptName);

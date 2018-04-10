@@ -1,22 +1,33 @@
 package br.com.liq.uraapps.xml;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import com.thoughtworks.xstream.XStream;
 
-import br.com.liq.uraapps.fraseologias.Fraseologia;
+import br.com.liq.uraapps.bean.Phrases;
 
 public class GenerateXML {
 
-	private FileOutputStream xml;
-
-	public void createXML(Fraseologia phrase) {
-
-		File fileXml = new File("./phrases/phrase.xml");
+	private String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+		+"<phrases_control>"
+  			+"<phrases>"
+    			+"<promptName id=\"\"></promptName>"
+    			+"<description id=\"\"></description>"
+  			+"</phrases>"
+		+"</phrases_control>";
 		
+	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/phrases/";
+
+	public void createXML(String appName) {
+
+		Phrases phrase = new Phrases();
+
+		XStream xs = new XStream();
+
+		File fileXml = new File(pathXmlFile + appName + ".xml");
+
 		if (!fileXml.exists()) {
 			try {
 				fileXml.createNewFile();
@@ -24,25 +35,15 @@ public class GenerateXML {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		
-		try {
-			this.xml = new FileOutputStream(fileXml);
-			xml.write(new XStream().toXML(phrase).getBytes());
-			xml.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
+			FileWriter writer;
+			try {
+				writer = new FileWriter(fileXml);
+				writer.write(xml);
+				writer.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 	}
-
-	public FileOutputStream getXml() {
-		System.out.println("XML Created.");
-		return xml;
-	}
-	
 }

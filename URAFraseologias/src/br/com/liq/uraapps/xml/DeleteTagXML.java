@@ -21,10 +21,10 @@ import br.com.liq.uraapps.bean.Phrases;
 
 public class DeleteTagXML {
 
-	public DeleteTagXML(Phrases phrasesParam, int item) {
+	public DeleteTagXML(Phrases phrasesParam, int item, String appName) {
 		// TODO Auto-generated constructor stub
 
-		ReadXML readXML = new ReadXML();
+		ReadXML readXML = new ReadXML(appName);
 
 		readXML.readerXML();
 

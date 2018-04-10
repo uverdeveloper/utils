@@ -20,9 +20,9 @@ import br.com.liq.uraapps.bean.Phrases;
 
 public class UpdateXML {
 
-	public UpdateXML(Phrases phrasesParam, int item) {
+	public UpdateXML(Phrases phrasesParam, int item, String appName) {
 
-		ReadXML readXML = new ReadXML();
+		ReadXML readXML = new ReadXML(appName);
 
 		readXML.readerXML();
 
@@ -34,6 +34,10 @@ public class UpdateXML {
 			try {
 				Document doc = docBuilder.parse(xml);
 
+				if(item == 0){
+					item += 1;
+				}
+				
 				Node promptName = doc.getElementsByTagName("promptName").item(item);
 				Node description = doc.getElementsByTagName("description").item(item);
 
@@ -45,8 +49,6 @@ public class UpdateXML {
 				DOMSource source = new DOMSource(doc);
 				StreamResult result = new StreamResult(new File(xml.toString()));
 				transformer.transform(source, result);
-
-				//System.out.println("Tag atualizada.");
 
 			} catch (SAXException | IOException | TransformerException e) {
 				// TODO Auto-generated catch block

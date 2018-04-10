@@ -7,33 +7,39 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<!-- <script src="../js/app.js"></script> -->
 		<script src="../js/screen/filters.js"></script>
+		<script src="../js/screen/menuApp.js"></script>
 		<script src="../js/crud/actions.js"></script>		
 		<title>Controle das nomeclaturas de prompts das URA's</title>
 	</head>
 	<body>
 		<label id="pagetitle"><h1>Controle das nomeclaturas de prompts das URA's</h1></label>
-		
-			<label id="pagesubtitle">Selecione a aplicação de URA:</label>
+		<div id="div1">
+			<div id="appMenu">
+				<label id="pagesubtitle">Selecione a aplicação de URA:</label>
+				<br />
+				<br />
+				<button id="btnAppsOptions" onclick="appsOptions()">Carregar aplicações</button>
+				<!-- <select id="apps">
+					<option value="----" disabled selected>----</option>
+					<option value="avi">AVI</option>
+					<option value="oidigitalcontrole">Oi Digital Controle</option>
+				</select>
+				<button onclick="promptDescriptionLoad()">Exibir</button> -->
+			</div>
+			<div id="actionsMenu">	 
+				<label id="cadastrar">Menu de ações:</label>
+				<br />
+				<br />
+				<select id="actionMenu">
+					<option value="----" disabled selected>-----</option>
+					<option value="inserir">inserir</option>
+					<option value="atualizar">atualizar</option>
+					<option value="deletar">deletar</option>
+				</select>
+				<button onclick="actionMenuLoad(this)">Escolher</button>
+			</div>
+		</div>
 			<br />
-			<br />
-			<select id="apps">
-				<option value="----" disabled selected>----</option>
-				<option value="avi">AVI</option>
-				<option value="oidigitalcontrole">Oi Digital Controle</option>
-			</select>
-			<button onclick="promptDescriptionLoad()">Exibir</button>
-			<br />
-			<br />
-			<label id="cadastrar">Menu de ações:</label>
-			<br />
-			<br />
-			<select id="actionMenu">
-				<option value="----" disabled selected>-----</option>
-				<option value="inserir">inserir</option>
-				<option value="atualizar">atualizar</option>
-				<option value="deletar">deletar</option>
-			</select>
-			<button onclick="actionMenuLoad(this)">Escolher</button>
 			<br />			
 			<div id="idTable">
 			</div>

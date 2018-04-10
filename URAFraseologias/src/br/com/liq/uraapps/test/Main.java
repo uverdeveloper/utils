@@ -1,21 +1,16 @@
 package br.com.liq.uraapps.test;
 
-import br.com.liq.uraapps.bean.Phrases;
-import br.com.liq.uraapps.xml.UpdateXML;
+import java.io.IOException;
+
+import br.com.liq.uraapps.xml.cadastrarapp.ReadMenuAppXML;
 
 public class Main {
 
-	public static void main(String[] args){
-			
-		Phrases p = new Phrases();
+	public static void main(String[] args) throws IOException{		
 		
-		p.setIdPromptName("18");
-		p.setPromptName("Y");
-		p.setDescription("X");
+		ReadMenuAppXML xml = new ReadMenuAppXML();
+		System.out.println(xml.getListMenuApp_Control());
 		
-		UpdateXML updateXML = new UpdateXML(p, 18);
-		
-		//DeleteTagXML deleteTagXML = new DeleteTagXML(p , 18);
-		
+		}	
 	}
-}
+
