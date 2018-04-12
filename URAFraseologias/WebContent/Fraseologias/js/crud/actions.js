@@ -4,7 +4,7 @@
 
 function newApplicationRegister(){
 	
-	var appName = $("#appName").val();
+	var appName = $("#appsName").val();
 	
 			$.ajax({
 				type : "POST",
@@ -28,7 +28,7 @@ function newApplicationRegister(){
 function register(){
 	
 	var data = {
-			"appName" : $("#apps").val(),
+			"appName" : $("#appsName").val(),
 			"idPromptName" : $("#positionPromptName").val(),
 			"promptName" : $("#idPromptName").val(),
 			"description" : $("#idDescription").val(),
@@ -58,10 +58,10 @@ function register(){
 
 function update(){
 	
-	var option = $("#apps").val();
+	var option = $("#appsName").val();
 	
 	var data = {
-			"appName" : $("#apps").val(),
+			"appName" : $("#appsName").val(),
 			"idPromptName" : $("#positionPromptName").val(), 
 			"promptName" : $("#idPromptName").val(),
 			"description" : $("#idDescription").val(),

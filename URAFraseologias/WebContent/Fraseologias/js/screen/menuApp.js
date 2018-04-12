@@ -44,8 +44,9 @@ function menuAppsHead(){
 	$("#appMenu").append(
 				"<div>"
 					+"<select id=\"appsName\">"
+					+"<option value=\"----\" disabled selected>-----</option>"
 					+"</select>"
-					+"<button onclick=\"promptDescriptionLoad()\">Exibir</button>"
+					+"<button onclick=\"promptDescriptionLoad(this)\">Exibir</button>"
 				+"</div>"
 	)
 }

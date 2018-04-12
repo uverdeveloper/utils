@@ -2,9 +2,9 @@ var idUpdate;
 
 function promptDescriptionLoad(){
 		
-	var option = $("#appsName").val();
-	
 	$("#idTable").empty();
+	
+	var option = $("#appsName").val();
 	
 		$.ajax({
 					type : "GET",
@@ -185,7 +185,7 @@ function regexId(num) {
 }
 
 function regexPromptName(str) {
-    var er = /[^0-9.]/;
+    var er = /[^0-9.a-z]/;
 	er.lastIndex = 0;
 	var campo = str;
 

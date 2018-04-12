@@ -24,7 +24,7 @@ public class ReadMenuAppXML {
 
 	private File fileXml;
 	private String xmlContent;
-	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/menu/apps.xml";
+	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/urafraseologias/menu/apps.xml";
 	private List<MenuApp_Control> listMenuApp_Control;
 
 	public Document readerXML() {		

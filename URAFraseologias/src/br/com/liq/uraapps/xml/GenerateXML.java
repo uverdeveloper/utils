@@ -18,7 +18,7 @@ public class GenerateXML {
   			+"</phrases>"
 		+"</phrases_control>";
 		
-	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/phrases/";
+	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/urafraseologias/phrases/";
 
 	public void createXML(String appName) {
 

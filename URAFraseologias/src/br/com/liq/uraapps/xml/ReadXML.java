@@ -25,7 +25,7 @@ public class ReadXML {
 
 	private File fileXml;
 	private String xmlContent;
-	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/phrases/";
+	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/urafraseologias/phrases/";
 	private List<Phrases_Control> listPhrases_Control;
 	private String appName = "";
 
