@@ -27,8 +27,6 @@ function newApplicationRegister(){
 
 function register(){
 	
-	var option = $("#apps").val();
-	
 	var data = {
 			"appName" : $("#apps").val(),
 			"idPromptName" : $("#positionPromptName").val(),

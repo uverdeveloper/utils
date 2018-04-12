@@ -1,10 +1,11 @@
 function appsOptions(){
 	
-	$("#idTable").empty();	
+	$("#idTable").empty();
+	$("#btnAppRegister").remove();
 
 		$.ajax({
 					type : "GET",
-					url : "http://localhost:8082/URAFraseologias/rest/menuApp/optionsLoad",
+					url : "http://localhost:8082/URAFraseologias/rest/menuApp/optionsLoad/",
 					contentType : "application/json; charset=UTF-8",
 					success : function(data) {
 						menuAppsHead();
@@ -26,6 +27,18 @@ function appsOptions(){
 				});
 }
 
+function actionMenuApp(){
+var option = $("#actionMenuApp").val();
+	
+	if(option == "cadastrar"){
+		newMenuAppRegister();
+	} else if (option == "apagar") {
+		deleteMenuAppRegister();
+	}  else{
+		alert('ESCOLHA UMA OPÇÃO VÁLIDA.')
+	}
+}
+
 function menuAppsHead(){
 	$("#btnAppsOptions").remove();
 	$("#appMenu").append(
@@ -34,5 +47,57 @@ function menuAppsHead(){
 					+"</select>"
 					+"<button onclick=\"promptDescriptionLoad()\">Exibir</button>"
 				+"</div>"
+	)
+}
+
+function newMenuAppRegister(){
+	$("#idTable").empty();
+	$("#idTable").append(
+			"<h1>Cadastrar aplicação:</h1>"
+			+"<br />"
+			+"<br />"
+			+"<table id=\"idTableNewAppRegistrer\" border=\"2\">"
+				+"<tbody>"
+					+"<tr>"
+						+"<td colspan=\"2\">"
+							+"Nome da aplicação" 
+						+"</td>"
+					+"</tr>"
+					+"<tr>"
+						+"<td>"
+							+"<input id=\"appName\"></input>" 
+						+"</td>"			
+						+"<td>"
+							+"<button id=\"btnAppRegister\" onclick=\"newApplicationRegister()\">Cadastrar</button>" 
+						+"</td>"
+					+"</tr>"
+				+"</tbody>"
+			+"</table>"
+	)
+}
+
+function deleteMenuAppRegister(){
+	$("#idTable").empty();
+	$("#idTable").append(
+			"<h1>Deletar aplicação:</h1>"
+			+"<br />"
+			+"<br />"
+			+"<table id=\"idTableDeleteRegistrer\" border=\"2\">"
+				+"<tbody>"
+					+"<tr>"
+						+"<td colspan=\"2\">"
+							+"Nome da aplicação" 
+						+"</td>"
+					+"</tr>"
+					+"<tr>"
+						+"<td>"
+							+"<input id=\"appName\"></input>" 
+						+"</td>"			
+						+"<td>"
+							+"<button id=\"btnAppDelete\" onclick=\"deleteApplicationRegister()\">Apagar</button>" 
+						+"</td>"
+					+"</tr>"
+				+"</tbody>"
+			+"</table>"
 	)
 }

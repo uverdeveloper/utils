@@ -25,14 +25,6 @@ import br.com.liq.uraapps.xml.WriteXML;
 @XmlRootElement
 @Path("/menu")
 public class FraseologiasCRUDResource {
-
-	//Utilizar no cadastramento de uma nova aplicação
-	/*@POST
-	@Path("/newApplicationRegister/{appName}")
-	public void newApplicationRegister(@PathParam ("appName") String appName){
-		GenerateXML generateXML = new GenerateXML();
-		generateXML.createXML(appName);
-	}*/
 	
 	@GET
 	@Path("/optionsLoad/{appName}")

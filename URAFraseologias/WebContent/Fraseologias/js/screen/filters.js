@@ -2,11 +2,10 @@ var idUpdate;
 
 function promptDescriptionLoad(){
 		
-	/*var option = $("#apps").val();*/
 	var option = $("#appsName").val();
 	
-	$("#idTable").empty();	
-
+	$("#idTable").empty();
+	
 		$.ajax({
 					type : "GET",
 					url : "http://localhost:8082/URAFraseologias/rest/menu/optionsLoad/"+option,
@@ -71,27 +70,6 @@ function actionMenuLoad(){
 	} else{
 		alert('ESCOLHA UMA OPÇÃO VÁLIDA.')
 	}	
-}
-
-function newApplicationRegister(){
-	$("#idTable").empty();
-	$("#idTable").append(
-			"<h1>Cadastrar aplicação:</h1>"
-			+"<br />"
-			+"<br />"
-			+"<table id=\"idTableNewAppRegistrer\" border=\"2\">"
-				+"<tbody>"
-					+"<tr>"
-						+"<td>"
-							+"<input id=\"appName\" onkeyup=\"regexPromptName(this);\"></input>" 
-						+"</td>"			
-						+"<td>"
-							+"<button id=\"btnAppRegister\" onclick=\"newApplicationRegister()\">Cadastrar</button>" 
-						+"</td>"
-					+"</tr>"
-				+"</tbody>"
-			+"</table>"
-	)
 }
 
 function promptNewRegsiter(){
@@ -207,7 +185,7 @@ function regexId(num) {
 }
 
 function regexPromptName(str) {
-    var er = /[^0-9a-z.]/;
+    var er = /[^0-9.]/;
 	er.lastIndex = 0;
 	var campo = str;
 

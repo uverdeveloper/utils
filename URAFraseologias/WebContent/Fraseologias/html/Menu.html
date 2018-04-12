@@ -5,26 +5,21 @@
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<!-- JQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<!-- <script src="../js/app.js"></script> -->
 		<script src="../js/screen/filters.js"></script>
 		<script src="../js/screen/menuApp.js"></script>
-		<script src="../js/crud/actions.js"></script>		
-		<title>Controle das nomeclaturas de prompts das URA's</title>
+		<script src="../js/crud/actions.js"></script>
+		<script src="../js/crud/menuAppActions.js"></script>		
+		<title>Controle das nomeclaturas de prompts das URAs</title>
 	</head>
 	<body>
-		<label id="pagetitle"><h1>Controle das nomeclaturas de prompts das URA's</h1></label>
+		<label id="pagetitle"><h1>Controle das nomeclaturas de prompts das URAs</h1></label>
 		<div id="div1">
 			<div id="appMenu">
-				<label id="pagesubtitle">Selecione a aplicação de URA:</label>
+				<label id="pagesubtitle">Carregar descrição:</label>
 				<br />
 				<br />
-				<button id="btnAppsOptions" onclick="appsOptions()">Carregar aplicações</button>
-				<!-- <select id="apps">
-					<option value="----" disabled selected>----</option>
-					<option value="avi">AVI</option>
-					<option value="oidigitalcontrole">Oi Digital Controle</option>
-				</select>
-				<button onclick="promptDescriptionLoad()">Exibir</button> -->
+				<button id="btnAppsOptions" onclick="appsOptions()">Carregar</button>
+				<!-- <button id="btnAppRegister" onclick="newMenuAppRegister()">Cadastrar aplicação</button> -->
 			</div>
 			<div id="actionsMenu">	 
 				<label id="cadastrar">Menu de ações:</label>
@@ -37,6 +32,17 @@
 					<option value="deletar">deletar</option>
 				</select>
 				<button onclick="actionMenuLoad(this)">Escolher</button>
+			</div>
+			<div>
+				<label id="AppConfig">Gerenciar aplicação:</label>
+				<br />
+				<br />
+				<select id="actionMenuApp">
+					<option value="----" disabled selected>-----</option>
+					<option value="cadastrar">cadastrar</option>
+					<option value="apagar">apagar</option>
+				</select>
+				<button onclick="actionMenuApp(this)">Escolher</button>
 			</div>
 		</div>
 			<br />

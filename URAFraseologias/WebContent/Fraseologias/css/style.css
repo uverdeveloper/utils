@@ -10,12 +10,14 @@
 				color: #FFFFFF;	
 			}
 
-			#pagesubtitle,#cadastrar{
+			#pagesubtitle,#cadastrar,#AppConfig{
 				color: #FFFFFF;
 			}
 
 			#div1{
-			width: 520px;
+			margin-top: 5%;
+			margin-left: 20%;
+			width: 780px;
 			}
 	
 			#appMenu{
@@ -75,5 +77,11 @@
 				margin-right: 5px;
 				width: 120px;
 				float: left;
+			}
+			
+			button{
+				width: 100px;
+				font-family: sans-serif;
+				text-align: center;
 			}
 			
