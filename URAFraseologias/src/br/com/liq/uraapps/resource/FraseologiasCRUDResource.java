@@ -66,11 +66,9 @@ public class FraseologiasCRUDResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public void deletePrompt(Phrases phrases){
 		
-		System.out.println(phrases.toString());
-		
 		int item = Integer.parseInt(phrases.getIdPromptName());
 		
-		DeleteTagXML deleteXML = new DeleteTagXML(phrases, item-1, phrases.getAppName());
+		DeleteTagXML updateXML = new DeleteTagXML(phrases, item-1, phrases.getAppName());
 		
 	}
 	

@@ -26,6 +26,7 @@ public class ReadXML {
 	private File fileXml;
 	private String xmlContent;
 	private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/urafraseologias/phrases/";
+	//private String pathXmlFile = "./welcome-content/urafraseologias/phrases/";
 	private List<Phrases_Control> listPhrases_Control;
 	private String appName = "";
 
@@ -65,7 +66,7 @@ public class ReadXML {
 	}
 
 	public File getFileXml() {
-		return fileXml;
+		return this.fileXml;
 	}
 
 	public void setFileXml(File fileXml) {

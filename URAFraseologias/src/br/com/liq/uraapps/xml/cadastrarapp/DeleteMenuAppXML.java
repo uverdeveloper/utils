@@ -43,7 +43,7 @@ public class DeleteMenuAppXML {
 				for (int i = 0; i < documentSize; i++) {
 				
 					Element menuApp = (Element) doc.getElementsByTagName("menuApp").item(i);
-					System.out.println(">>>" + documentSize);
+					
 					if (menuApp != null && MenuAppParam.getAppName().equals(menuApp.getTextContent().trim())) {
 						Node parent = menuApp.getParentNode();
 						parent.removeChild(menuApp);

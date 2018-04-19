@@ -71,7 +71,9 @@
 			
 			#mensagem{
 				color: red;
-				margin-left: 50%:
+				text-align: center;
+				width: 50px;
+				height: 50px;
 			}
 			
 			#appsName{

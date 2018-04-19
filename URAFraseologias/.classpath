@@ -29,5 +29,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jaxb-api-2.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-xml-databind-0.6.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stax2-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jaxp-api-1.4.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

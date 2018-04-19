@@ -1,3 +1,11 @@
+
+var isHomologacao = false;
+var url = "http://10.200.14.202:8080";
+
+if (!isHomologacao) {
+	url = "http://localhost:8082";
+}
+
 function appsOptions(){
 	
 	$("#idTable").empty();
@@ -5,7 +13,7 @@ function appsOptions(){
 
 		$.ajax({
 					type : "GET",
-					url : "http://localhost:8082/URAFraseologias/rest/menuApp/optionsLoad/",
+					url : url+"/URAFraseologias/rest/menuApp/optionsLoad/",
 					contentType : "application/json; charset=UTF-8",
 					success : function(data) {
 						menuAppsHead();
@@ -17,6 +25,7 @@ function appsOptions(){
 										})
 					},
 					error : function() {
+						$("#mensagem").empty();
 						$("body").append(
 								"<div>"
 										+ "<p>"
@@ -32,6 +41,7 @@ var option = $("#actionMenuApp").val();
 	
 	if(option == "cadastrar"){
 		newMenuAppRegister();
+		
 	} else if (option == "apagar") {
 		deleteMenuAppRegister();
 	}  else{

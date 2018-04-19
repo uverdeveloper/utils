@@ -1,4 +1,12 @@
 var idUpdate;
+var isHomologacao = false;
+
+var url = "http://10.200.14.202:8080";
+
+if (!isHomologacao) {
+	url = "http://localhost:8082";
+}
+
 
 function promptDescriptionLoad(){
 		
@@ -8,7 +16,7 @@ function promptDescriptionLoad(){
 	
 		$.ajax({
 					type : "GET",
-					url : "http://localhost:8082/URAFraseologias/rest/menu/optionsLoad/"+option,
+					url : url+"/URAFraseologias/rest/menu/optionsLoad/"+option,
 					contentType : "application/json; charset=UTF-8",
 					success : function(data) {
 						tableHead();
@@ -25,6 +33,7 @@ function promptDescriptionLoad(){
 						})
 					},
 					error : function() {
+						$("#mensagem").empty();
 						$("body").append(
 								"<div>"
 										+ "<p>"
