@@ -7,6 +7,8 @@ import br.com.liq.uraapps.bean.Phrases;
 import br.com.liq.uraapps.xml.DeleteTagXML;
 import br.com.liq.uraapps.xml.WriteXML;
 import br.com.liq.uraapps.xml.cadastrarapp.DeleteMenuAppXML;
+import br.com.liq.uraapps.xml.cadastrarapp.GenerateXML;
+import br.com.liq.uraapps.xml.cadastrarapp.WriteMenuAppXML;
 
 public class Main {
 
@@ -15,17 +17,10 @@ public class Main {
 		Phrases phrases = new Phrases();
 		phrases.setAppName("avi");
 		phrases.setIdPromptName("17");
+		phrases.setPromptName("t");
+		phrases.setIdDescription("teste");
 		
-		
-		
-		//int item = Integer.parseInt(phrases.getIdPromptName());
-		
-		/*DeleteTagXML deleteTagXML = new DeleteTagXML(phrases, item-1, phrases.getAppName());*/
-		
-		phrases.setPromptName("Uver");
-		phrases.setDescription("Teste");
-		
-		WriteXML writeXML = new WriteXML(phrases, phrases.getAppName());
+		DeleteTagXML deleteTagXML = new DeleteTagXML(phrases, Integer.parseInt(phrases.getIdPromptName())-1, phrases.getAppName());
 		
 		}	
 	}

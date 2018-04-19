@@ -1,5 +1,5 @@
 var idUpdate;
-var isHomologacao = false;
+var isHomologacao = true;
 
 var url = "http://10.200.14.202:8080";
 
@@ -9,7 +9,7 @@ if (!isHomologacao) {
 
 
 function promptDescriptionLoad(){
-		
+	$("#mensagem").empty();	
 	$("#idTable").empty();
 	
 	var option = $("#appsName").val();
@@ -46,6 +46,7 @@ function promptDescriptionLoad(){
 
 function tableHead(){
 	$("#idTable").empty();
+	$("#mensagem").empty();
 	$("#idTable").append(
 			"<h1>Descrição dos prompts da aplicação:</h1>"
 			+"<br />"
@@ -83,6 +84,7 @@ function actionMenuLoad(){
 
 function promptNewRegsiter(){
 	$("#idTable").empty();
+	$("#mensagem").empty();
 	$("#idTable").append(
 			"<h1>Cadastrar novo prompt:</h1>"
 			+"<br />"
@@ -119,6 +121,7 @@ function promptNewRegsiter(){
 function updateScreen(){
 	
 	$("#idTable").empty();
+	$("#mensagem").empty();
 	$("#idTableRegistrer").empty();
 	
 	$("#idTable").append(
@@ -154,7 +157,7 @@ function updateScreen(){
 }
 
 function deleteScreen(){
-	
+	$("#mensagem").empty();
 	$("#idTable").empty();
 	$("#idTableRegistrer").empty();
 	$("#idTableUpdate").empty();

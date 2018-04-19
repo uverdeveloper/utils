@@ -36,6 +36,10 @@ public class DeleteTagXML {
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(readXML.getFileXml());
 			
+			/*if(item == 0){
+				item += 1;
+			}*/
+			
 			Node phrase = doc.getElementsByTagName("phrases").item(item);
 			
 			phrase.getParentNode().removeChild(phrase);

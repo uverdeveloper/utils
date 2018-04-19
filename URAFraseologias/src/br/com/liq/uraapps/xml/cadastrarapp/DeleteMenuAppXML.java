@@ -59,6 +59,8 @@ public class DeleteMenuAppXML {
 					StreamResult result = new StreamResult(new File(xml.toString()));
 					transformer.transform(source, result);
 				}
+				
+				DeleteXML deleteXML = new DeleteXML(MenuAppParam);
 
 			} catch (SAXException | IOException | TransformerException e) {
 				e.printStackTrace();

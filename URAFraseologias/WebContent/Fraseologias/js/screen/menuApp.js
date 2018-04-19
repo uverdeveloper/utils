@@ -1,5 +1,5 @@
 
-var isHomologacao = false;
+var isHomologacao = true;
 var url = "http://10.200.14.202:8080";
 
 if (!isHomologacao) {
@@ -50,6 +50,7 @@ var option = $("#actionMenuApp").val();
 }
 
 function menuAppsHead(){
+	
 	$("#btnAppsOptions").remove();
 	$("#appMenu").append(
 				"<div>"
@@ -62,6 +63,7 @@ function menuAppsHead(){
 }
 
 function newMenuAppRegister(){
+	$("#mensagem").empty();
 	$("#idTable").empty();
 	$("#idTable").append(
 			"<h1>Cadastrar aplicação:</h1>"
@@ -88,6 +90,7 @@ function newMenuAppRegister(){
 }
 
 function deleteMenuAppRegister(){
+	$("#mensagem").empty();
 	$("#idTable").empty();
 	$("#idTable").append(
 			"<h1>Deletar aplicação:</h1>"

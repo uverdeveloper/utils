@@ -1,7 +1,7 @@
 /**
  * 
  */
-var isHomologacao = false;
+var isHomologacao = true;
 var url = "http://10.200.14.202:8080";
 
 if (!isHomologacao) {
@@ -18,9 +18,10 @@ function newApplicationRegister(){
 				url : url+"/URAFraseologias/rest/menu/optionsLoad/newApplicationRegister/"+appName,
 				contentType : "application/json; charset=UTF-8",
 				success : function() {
+					location.reload();
 				},					
 				error : function() {
-					$("#mensagem").empty();
+					
 					$("body").append(
 							"<div>"
 								+ "<p>"
@@ -61,7 +62,7 @@ function register(){
 								location.reload();
 								},
 							error : function(erro) {
-								$("#mensagem").empty();
+								
 								$("body").append(
 										"<div>"
 										+ "<p>"
@@ -93,10 +94,11 @@ function update(){
 							dataType : "text",
 							contentType : "application/json; charset=utf-8",
 							data : json,
-							success : function(result) {								
+							success : function(result) {
+								location.reload();							
 								},
 							error : function(erro) {
-								$("#mensagem").empty();
+								
 								$("body").append(
 										"<div>"
 										+ "<p>"
@@ -125,10 +127,10 @@ function deletePrompt(){
 							contentType : "application/json; charset=utf-8",
 							data : json,
 							success : function(result) {
-								//window.location.href = url+"/URAFraseologias/Fraseologias/html/Menu.html";
+								location.reload();
 								},
 							error : function(erro) {
-								$("#mensagem").empty();
+								
 								$("body").append(
 										"<div>"
 										+ "<p>"

@@ -34,9 +34,9 @@ public class UpdateXML {
 			try {
 				Document doc = docBuilder.parse(xml);
 
-				if(item == 0){
+				/*if(item == 0){
 					item += 1;
-				}
+				}*/
 				
 				Node promptName = doc.getElementsByTagName("promptName").item(item);
 				Node description = doc.getElementsByTagName("description").item(item);

@@ -17,10 +17,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 import br.com.liq.uraapps.bean.Phrases;
 import br.com.liq.uraapps.bean.Phrases_Control;
 import br.com.liq.uraapps.xml.DeleteTagXML;
-import br.com.liq.uraapps.xml.GenerateXML;
 import br.com.liq.uraapps.xml.ReadXML;
 import br.com.liq.uraapps.xml.UpdateXML;
 import br.com.liq.uraapps.xml.WriteXML;
+import br.com.liq.uraapps.xml.cadastrarapp.GenerateXML;
 
 @XmlRootElement
 @Path("/menu")

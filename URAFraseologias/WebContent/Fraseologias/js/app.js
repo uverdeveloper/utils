@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#appSelect").click(function(){
-        chosenApp();
+       /* chosenApp();*/
     });
    });
 

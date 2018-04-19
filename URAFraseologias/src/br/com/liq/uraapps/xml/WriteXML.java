@@ -48,7 +48,7 @@ public class WriteXML {
 		try {
 			FileWriter archive = new FileWriter(readXML.getFileXml());
 			//Print no console
-			//xout.output(document, archive);
+			xout.output(document, archive);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,8 +1,5 @@
-/**
- * 
- */
 
-var isHomologacao = false;
+var isHomologacao = true;
 var url = "http://10.200.14.202:8080";
 
 if (!isHomologacao) {
@@ -12,8 +9,6 @@ if (!isHomologacao) {
 function newApplicationRegister(){
 	
 	$("#mensagem").empty();
-	
-	alert($("#appName").val());
 	
 	var data = {
 			"appName" : $("#appName").val(),
@@ -28,10 +23,10 @@ function newApplicationRegister(){
 				contentType : "application/json; charset=utf-8",
 				data : json,
 				success : function(result) {
-					promptNewRegsiter();
+					location.reload();					
 					},
 				error : function() {
-					$("#mensagem").empty();
+
 					$("body").append(
 							"<div>"
 								+ "<p>"
@@ -62,7 +57,7 @@ function deleteApplicationRegister(){
 					location.reload();
 					},
 				error : function() {
-					$("#mensagem").empty();
+					
 					$("body").append(
 							"<div>"
 								+ "<p>"

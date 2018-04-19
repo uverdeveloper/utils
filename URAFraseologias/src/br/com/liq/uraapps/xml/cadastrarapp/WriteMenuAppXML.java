@@ -48,5 +48,10 @@ public class WriteMenuAppXML {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		// Gerando o xml da aplicacao
+		GenerateXML generateXML = new GenerateXML();
+		generateXML.createXML(menuAppParam.getAppName());
+		
 	}
 }
