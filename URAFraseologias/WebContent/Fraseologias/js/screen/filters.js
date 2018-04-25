@@ -14,35 +14,40 @@ function promptDescriptionLoad(){
 	
 	var option = $("#appsName").val();
 	
-		$.ajax({
-					type : "GET",
-					url : url+"/URAFraseologias/rest/menu/optionsLoad/"+option,
-					contentType : "application/json; charset=UTF-8",
-					success : function(data) {
-						tableHead();
+	$.ajax(
+			{
+				type : "GET",
+				url : url+"/URAFraseologias/rest/menu/optionsLoad/"+option,
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+					tableHead();
 						$.each(data, function(index, value) {
 							
-							idUpdate = data[index].phrases.idUpdate;
+						idUpdate = data[index].phrases.idUpdate;
 							
-							$("tbody").append(
-											"<tr>"
-												+ "<td>" + data[index].phrases.idPromptName + "</td>"
-												+ "<td class=\"colPromptName\">" + data[index].phrases.promptName + "</td>"
-												+ "<td class=\"colPromptContent\">" + data[index].phrases.description + "</td>"
-											+ "</tr>")
-						})
-					},
-					error : function() {
-						$("#mensagem").empty();
-						$("body").append(
-								"<div>"
+						$("tbody").append(
+										"<tr>"
+											+ "<td>" + data[index].phrases.idPromptName + "</td>"
+											+ "<td class=\"colPromptName\">" + data[index].phrases.promptName + "</td>"
+											+ "<td class=\"colPromptContent\">" + data[index].phrases.description + "</td>"
+										+ "</tr>"
+										)
+									}
+							  )	
+						},
+				error : function() {
+					$("#mensagem").empty();
+					$("body").append(
+									"<div>"
 										+ "<p>"
-										+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
+											+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
 										+ "</p>"
-										+ "</div>")
-					}
-				});
-}
+									+ "</div>"
+									)
+								}
+				}
+			);
+		}
 
 function tableHead(){
 	$("#idTable").empty();
@@ -86,37 +91,36 @@ function promptNewRegsiter(){
 	$("#idTable").empty();
 	$("#mensagem").empty();
 	$("#idTable").append(
-			"<h1>Cadastrar novo prompt:</h1>"
-			+"<br />"
-			+"<br />"
-			+"<table id=\"idTableRegistrer\" border=\"2\">"
-				+"<thead>"
-					+"<tr>"
-						+"<th class=\"colPromptTitle\">ID</th>"
-						+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
-						+"<th class=\"colContentTitle\" colspan=\"2\">CONTEUDO</th>"
-					+"</tr>"
-				+"</thead>"
-				+"<tbody>"
-					+"<tr>"
-						+"<td>"
-							+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
-						+"</td>"
-						+"<td>"
-							+"<input id=\"idPromptName\" onkeyup=\"regexPromptName(this);\" type=\"text\"></input>" 
-						+"</td>"	
-						+"<td>"
-							+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
-					+"</td>"				
-						+"<td>"
-							+"<button id=\"btnRegister\" onclick=\"register()\">Inserir</button>" 
-						+"</td>"
-					+"</tr>"
-				+"</tbody>"
-			+"</table>"
-		)
-	
-}
+						"<h1>Cadastrar novo prompt:</h1>"
+						+"<br />"
+						+"<br />"
+						+"<table id=\"idTableRegistrer\" border=\"2\">"
+							+"<thead>"
+								+"<tr>"
+									+"<th class=\"colPromptTitle\">ID</th>"
+									+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
+									+"<th class=\"colContentTitle\" colspan=\"2\">CONTEUDO</th>"
+								+"</tr>"
+							+"</thead>"
+							+"<tbody>"
+								+"<tr>"
+									+"<td>"
+										+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
+									+"</td>"
+									+"<td>"
+										+"<input id=\"idPromptName\" onkeyup=\"regexPromptName(this);\" type=\"text\"></input>" 
+									+"</td>"	
+									+"<td>"
+										+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
+									+"</td>"				
+									+"<td>"
+										+"<button id=\"btnRegister\" onclick=\"register()\">Inserir</button>" 
+									+"</td>"
+								+"</tr>"
+							+"</tbody>"
+						+"</table>"
+						)
+					}
 
 function updateScreen(){
 	
@@ -125,36 +129,36 @@ function updateScreen(){
 	$("#idTableRegistrer").empty();
 	
 	$("#idTable").append(
-		"<h1>Atualização dos prompts:</h1>"
-		+"<br />"
-		+"<br />"
-		+"<table id=\"idTableUpdate\" border=\"2\">"
-		 +"<thead>"
-			+"<tr>"
-				+"<th class=\"colPromptTitle\">ID</th>"
-				+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
-				+"<th class=\"colContentTitle\" colspan=\"2\">CONTEUDO</th>"
-			+"</tr>"
-		+"</thead>"
-		+"<tbody>"
-			+"<tr>"
-				+"<td>"
-					+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
-				+"</td>"
-				+"<td>"
-					+"<input id=\"idPromptName\" onkeyup=\"regexPromptName(this);\" type=\"text\"></input>" 
-				+"</td>"	
-				+"<td>"
-					+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
-				+"</td>"				
-				+"<td>"
-					+"<button id=\"btnUpdate\" onclick=\"update()\">Confirmar</button>" 
-					+"</td>"
-				+"</tr>"
-			+"</tbody>"
-		+"</table>"
-	)
-}
+						"<h1>Atualização dos prompts:</h1>"
+						+"<br />"
+						+"<br />"
+						+"<table id=\"idTableUpdate\" border=\"2\">"
+							+"<thead>"
+								+"<tr>"
+									+"<th class=\"colPromptTitle\">ID</th>"
+									+"<th class=\"colPromptTitle\">NOME DE PROMPT</th>"
+									+"<th class=\"colContentTitle\" colspan=\"2\">CONTEUDO</th>"
+								+"</tr>"
+							+"</thead>"
+							+"<tbody>"
+								+"<tr>"
+									+"<td>"
+										+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
+									+"</td>"
+									+"<td>"
+										+"<input id=\"idPromptName\" onkeyup=\"regexPromptName(this);\" type=\"text\"></input>" 
+									+"</td>"	
+									+"<td>"
+										+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
+									+"</td>"				
+									+"<td>"
+										+"<button id=\"btnUpdate\" onclick=\"update()\">Confirmar</button>" 
+									+"</td>"
+								+"</tr>"
+							+"</tbody>"
+						+"</table>"
+						)
+					}
 
 function deleteScreen(){
 	$("#mensagem").empty();
@@ -163,28 +167,28 @@ function deleteScreen(){
 	$("#idTableUpdate").empty();
 	
 	$("#idTable").append(
-		"<h1>Exclusão da descrição dos prompts:</h1>"
-		+"<br />"
-		+"<br />"
-	    +"<table id=\"idTableDelete\" border=\"2\">"
-		+"<thead>"
-			+"<tr>"
-				+"<th class=\"colPromptTitle\" colspan=\"2\">ID</th>"
-			+"</tr>"
-		+"</thead>"
-		+"<tbody>"
-			+"<tr>"
-				+"<td>"
-					+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
-				+"</td>"				
-				+"<td>"
-					+"<button id=\"btnDelete\" onclick=\"deletePrompt()\">Confirmar</button>" 
-				+"</td>"
-			+"</tr>"
-		+"</tbody>"
-		+"</table>"
-	)
-}
+						"<h1>Exclusão da descrição dos prompts:</h1>"
+						+"<br />"
+						+"<br />"
+						+"<table id=\"idTableDelete\" border=\"2\">"
+							+"<thead>"
+								+"<tr>"
+									+"<th class=\"colPromptTitle\" colspan=\"2\">ID</th>"
+								+"</tr>"
+							+"</thead>"
+							+"<tbody>"
+								+"<tr>"
+									+"<td>"
+										+"<input id=\"positionPromptName\" onkeyup=\"regexId(this);\"></input>" 
+									+"</td>"				
+									+"<td>"
+										+"<button id=\"btnDelete\" onclick=\"deletePrompt()\">Confirmar</button>" 
+									+"</td>"
+								+"</tr>"
+							+"</tbody>"
+						+"</table>"
+						)
+					}
 
 function regexId(num) {
 	var er = /[^0-9 ]/;

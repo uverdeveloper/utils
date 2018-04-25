@@ -11,12 +11,13 @@ function newApplicationRegister(){
 	$("#mensagem").empty();
 	
 	var data = {
-			"appName" : $("#appName").val(),
-			};
+				"appName" : $("#appName").val(),
+				};
 	
-			json = JSON.stringify(data);
+	json = JSON.stringify(data);
 			
-			$.ajax({
+	$.ajax(
+			{
 				type : "POST",
 				url : url+"/URAFraseologias/rest/menuApp/",
 				dataType : "text",
@@ -24,30 +25,32 @@ function newApplicationRegister(){
 				data : json,
 				success : function(result) {
 					location.reload();					
-					},
+				},
 				error : function() {
-
 					$("body").append(
-							"<div>"
-								+ "<p>"
-								+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
-								+ "</p>"
-								+ "</div>")
-							}
-						});
-						}
+									"<div>"
+										+ "<p>"
+												+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
+										+ "</p>"
+									+ "</div>"
+									)
+								}
+			}
+		);
+}
 
 function deleteApplicationRegister(){
 	
 	$("#mensagem").empty();
 	
 	var data = {
-			"appName" : $("#appName").val(),
-			};
+				"appName" : $("#appName").val(),
+				};
 	
-			json = JSON.stringify(data);
+	json = JSON.stringify(data);
 			
-			$.ajax({
+	$.ajax(
+			{
 				type : "DELETE",
 				url : url+"/URAFraseologias/rest/menuApp/",
 				dataType : "text",
@@ -55,15 +58,16 @@ function deleteApplicationRegister(){
 				data : json,
 				success : function(result) {
 					location.reload();
-					},
-				error : function() {
-					
+				},
+				error : function() {		
 					$("body").append(
-							"<div>"
-								+ "<p>"
-								+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
-								+ "</p>"
-								+ "</div>")
-							}
-						});
-						}
+									"<div>"
+										+ "<p>"
+											+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
+											+ "</p>"
+									+ "</div>"
+									)
+								}
+			}
+		);
+	}

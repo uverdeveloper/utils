@@ -13,7 +13,8 @@ function newApplicationRegister(){
 	
 	var appName = $("#appsName").val();
 	
-			$.ajax({
+	$.ajax(
+			{
 				type : "POST",
 				url : url+"/URAFraseologias/rest/menu/optionsLoad/newApplicationRegister/"+appName,
 				contentType : "application/json; charset=UTF-8",
@@ -21,57 +22,57 @@ function newApplicationRegister(){
 					location.reload();
 				},					
 				error : function() {
-					
 					$("body").append(
-							"<div>"
-								+ "<p>"
-								+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
-								+ "</p>"
-								+ "</div>")
+									"<div>"
+										+ "<p>"
+											+ "<label for=\"msg\" id=\"mensagem\">Internal error.</label>"
+										+ "</p>"
+									+ "</div>"
+									)
 								}
-				});
 			}
+		);
+	}
 
 function register(){
 	
 	$("#mensagem").empty();
 	
 	var appName;
-	/*var appRegsiter = $("#appsName").val();
 	
-	if(appRegsiter === undefined){*/
-		appName = $("#appsName").val();
-	//}
+	appName = $("#appsName").val();
 	
 	var data = {
-			"appName" : appName,
-			"idPromptName" : $("#positionPromptName").val(),
-			"promptName" : $("#idPromptName").val(),
-			"description" : $("#idDescription").val(),
-			};
+				"appName" : appName,
+				"idPromptName" : $("#positionPromptName").val(),
+				"promptName" : $("#idPromptName").val(),
+				"description" : $("#idDescription").val(),
+				};
 	
 			json = JSON.stringify(data);
 	
-					$.ajax({
-							type : "POST",
-							url : url+"/URAFraseologias/rest/menu/",
-							dataType : "text",
-							contentType : "application/json; charset=utf-8",
-							data : json,
-							success : function(result) {								
-								location.reload();
-								},
-							error : function(erro) {
-								
-								$("body").append(
-										"<div>"
+	$.ajax(
+			{
+				type : "POST",
+				url : url+"/URAFraseologias/rest/menu/",
+				dataType : "text",
+				contentType : "application/json; charset=utf-8",
+				data : json,
+				success : function(result) {								
+					location.reload();
+				},
+				error : function(erro) {				
+					$("body").append(
+									"<div>"
 										+ "<p>"
-										+ "<label for=\"msg\" id=\"mensagem\">Prompt não cadastrado.</label>"
+											+ "<label for=\"msg\" id=\"mensagem\">Prompt não cadastrado.</label>"
 										+ "</p>"
-										+ "</div>")
+									+ "</div>"
+									)
 								}
-							});
-						}
+				}
+			);
+		}
 
 function update(){
 	
@@ -80,66 +81,70 @@ function update(){
 	var option = $("#appsName").val();
 	
 	var data = {
-			"appName" : $("#appsName").val(),
-			"idPromptName" : $("#positionPromptName").val(), 
-			"promptName" : $("#idPromptName").val(),
-			"description" : $("#idDescription").val(),
-			};
+				"appName" : $("#appsName").val(),
+				"idPromptName" : $("#positionPromptName").val(), 
+				"promptName" : $("#idPromptName").val(),
+				"description" : $("#idDescription").val(),
+			    };
 	
-			json = JSON.stringify(data);
+	json = JSON.stringify(data);
 	
-					$.ajax({
-							type : "PUT",
-							url : url+"/URAFraseologias/rest/menu/",
-							dataType : "text",
-							contentType : "application/json; charset=utf-8",
-							data : json,
-							success : function(result) {
-								location.reload();							
-								},
-							error : function(erro) {
-								
-								$("body").append(
-										"<div>"
+	$.ajax(
+			{
+				type : "PUT",
+				url : url+"/URAFraseologias/rest/menu/",
+				dataType : "text",
+				contentType : "application/json; charset=utf-8",
+				data : json,
+				success : function(result) {
+					location.reload();							
+				},
+				error : function(erro) {				
+					$("body").append(
+									"<div>"
 										+ "<p>"
-										+ "<label for=\"msg\" id=\"mensagem\">Prompt não atualizado.</label>"
+											+ "<label for=\"msg\" id=\"mensagem\">Prompt não atualizado.</label>"
 										+ "</p>"
-										+ "</div>")
+									+ "</div>"
+									)
 								}
-							});
-						}
+			}
+		);
+	}
 
 function deletePrompt(){
 	
 	$("#mensagem").empty();	
 	
 	var data = {
-			"appName" : $("#appsName").val(),
-			"idPromptName" : $("#positionPromptName").val(),
-			};
+				"appName" : $("#appsName").val(),
+				"idPromptName" : $("#positionPromptName").val(),
+				};
 	
-			json = JSON.stringify(data);
+	json = JSON.stringify(data);
 	
-					$.ajax({
-							type : "DELETE",
-							url : url+"/URAFraseologias/rest/menu/",
-							dataType : "text",
-							contentType : "application/json; charset=utf-8",
-							data : json,
-							success : function(result) {
-								location.reload();
-								},
-							error : function(erro) {
-								
-								$("body").append(
-										"<div>"
+	$.ajax(
+			{
+				type : "DELETE",
+				url : url+"/URAFraseologias/rest/menu/",
+				dataType : "text",
+				contentType : "application/json; charset=utf-8",
+				data : json,
+				success : function(result) {
+					location.reload();
+				},
+				error : function(erro) {				
+					$("body").append(
+									"<div>"
 										+ "<p>"
-										+ "<label for=\"msg\" id=\"mensagem\">Prompt não apagado.</label>"
+											+ "<label for=\"msg\" id=\"mensagem\">Prompt não apagado.</label>"
 										+ "</p>"
-										+ "</div>")
+									+ "</div>"
+									)
 								}
-							});
-						}
+			}
+		);
+	}
 
 
 	
