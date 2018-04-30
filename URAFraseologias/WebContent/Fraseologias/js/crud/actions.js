@@ -40,6 +40,8 @@ function register(){
 	
 	appName = $("#appsName").val();
 	
+	if($("#idPromptName").val() != ""){
+	
 	var data = {
 				"appName" : appName,
 				"idPromptName" : $("#positionPromptName").val(),
@@ -57,7 +59,7 @@ function register(){
 				contentType : "application/json; charset=utf-8",
 				data : json,
 				success : function(result) {								
-					location.reload();
+					/*location.reload();*/
 				},
 				error : function(erro) {				
 					$("body").append(
@@ -70,7 +72,19 @@ function register(){
 								}
 				}
 			);
+		}else{
+			$("body").append(
+					"<div>"
+						+ "<p style=\"text-align: center\">"
+							+ "<label for=\"msg\" id=\"mensagem\">Favor preencher os campos.</label>"
+						+ "</p>"
+					+ "</div>"
+					)
 		}
+	
+	promptDescriptionLoad();
+	
+	}
 
 function update(){
 	

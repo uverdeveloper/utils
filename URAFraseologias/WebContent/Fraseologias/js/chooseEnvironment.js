@@ -3,7 +3,7 @@
  */
 function chooseEnvironment() {
 
-	var isHomologacao = true;
+	var isHomologacao = false;
 
 	var url = "http://10.200.14.202:8080";
 

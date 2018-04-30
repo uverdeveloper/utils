@@ -51,10 +51,15 @@
 				font-weight: bold;
 				color: #FFFFFF;
 			}
-			td.colContent{				
+			td.positionPromptName{				
 				text-align: center;				
 			}
-			td.colPromptName{				
+			td.colId, td.colPromptName, td.colContent, td.colAction{
+				width: 176px;
+				height: 26px;				
+				text-align: center;				
+			}
+			td.colPromptContent{				
 				padding-right: 50px;
 				padding-left: 50px;
 				text-align: center;				
@@ -86,5 +91,9 @@
 				width: 100px;
 				font-family: sans-serif;
 				text-align: center;
+			}
+			
+			#btnNewRegister{
+				margin-left: 864px;
 			}
 			
