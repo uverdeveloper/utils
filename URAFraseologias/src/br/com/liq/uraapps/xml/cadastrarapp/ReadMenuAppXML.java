@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,18 +20,26 @@ import org.xml.sax.SAXException;
 
 import br.com.liq.uraapps.bean.MenuApp;
 import br.com.liq.uraapps.bean.MenuApp_Control;
+import br.com.liq.uraapps.properties.CarregaProperties;
 
 public class ReadMenuAppXML {
 
 	private File fileXml;
 	private String xmlContent;
-	//private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/urafraseologias/menu/apps.xml";
-	private String pathXmlFile = "/opt/wildfly-10.1.0.Final/welcome-content/urafraseologias/menu/apps.xml";
 	private List<MenuApp_Control> listMenuApp_Control;
 
 	public Document readerXML() {		
 		
-		File file = new File(this.pathXmlFile);
+		Properties props = null;
+		
+		try {
+			props = CarregaProperties.getProp();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		File file = new File(props.getProperty("menuApp"));
 
 		setFileXml(file);
 		
@@ -56,7 +65,16 @@ public class ReadMenuAppXML {
 	}
 
 	public String getPathXmlFile() {
-		return this.pathXmlFile;
+		
+		Properties props = null;
+		
+		try {
+			props = CarregaProperties.getProp();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return props.getProperty("menuApp");
 	}
 
 	public File getFileXml() {

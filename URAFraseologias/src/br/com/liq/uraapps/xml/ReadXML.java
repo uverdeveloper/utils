@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,13 +21,12 @@ import org.xml.sax.SAXException;
 
 import br.com.liq.uraapps.bean.Phrases;
 import br.com.liq.uraapps.bean.Phrases_Control;
+import br.com.liq.uraapps.properties.CarregaProperties;
 
 public class ReadXML {
 
 	private File fileXml;
 	private String xmlContent;
-	//private String pathXmlFile = "C:/wildfly-10.1.0.Final/welcome-content/urafraseologias/phrases/";
-	private String pathXmlFile = "/opt/wildfly-10.1.0.Final/welcome-content/urafraseologias/phrases/";
 	private List<Phrases_Control> listPhrases_Control;
 	private String appName = "";
 
@@ -36,7 +36,16 @@ public class ReadXML {
 
 	public Document readerXML() {		
 		
-		File file = new File(this.pathXmlFile+appName+".xml");
+		Properties props = null;
+		
+		try {
+			props = CarregaProperties.getProp();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		File file = new File(props.getProperty("phrases")+this.appName+".xml");
 
 		setFileXml(file);
 		
@@ -62,7 +71,17 @@ public class ReadXML {
 	}
 
 	public String getPathXmlFile() {
-		return this.pathXmlFile;
+		
+		Properties props = null;
+		
+		try {
+			props = CarregaProperties.getProp();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		return props.getProperty("phrases")+this.appName+".xml";
 	}
 
 	public File getFileXml() {

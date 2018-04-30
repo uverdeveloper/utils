@@ -1,12 +1,8 @@
 var idUpdate;
-var isHomologacao = true;
 
-var url = "http://10.200.14.202:8080";
-
-if (!isHomologacao) {
-	url = "http://localhost:8082";
-}
-
+$.getScript('../js/chooseEnvironment.js', function(){
+	url = chooseEnvironment();	
+});
 
 function promptDescriptionLoad(){
 	$("#mensagem").empty();	
@@ -53,7 +49,7 @@ function tableHead(){
 	$("#idTable").empty();
 	$("#mensagem").empty();
 	$("#idTable").append(
-			"<h1>Descrição dos prompts da aplicação:</h1>"
+			"<h1>Descrição dos prompts:</h1>"
 			+"<br />"
 			+"<br />"
 			+"<table id=\"idTable\" border=\"2\">"
