@@ -94,6 +94,13 @@
 			}
 			
 			#btnNewRegister{
-				margin-left: 864px;
+				margin-left: 89.5%;
+			}
+			#btnRegister{
+				margin-left: 38px;
+			}
+			
+			input{
+				width: 100%;
 			}
 			

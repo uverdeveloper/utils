@@ -126,13 +126,19 @@ function updateScreen(trId, idUpdate){
 	idUpdate = trId.value;
 	
 	$("#"+trId.value).remove();
-		$("tbody").append(
-			"<tr id=\""+trId+"\">"
+
+	var addLine = parseInt(trId.value) - 1;
+	var addItem = addLine.toString();
+	
+	
+	
+		$("#idTable tbody").append(
+			"<tr id=\""+trId.value+"\">"
 				+"<td>"
-					+"<input id=\"positionPromptName\" value=\""+idUpdate+"\"></input>" 
+					+"<input id=\"positionPromptName" + trId.value +"\" value=\""+idUpdate+"\"></input>" 
 				+"</td>"
 				+"<td>"
-					+"<input id=\"idPromptName\" onkeyup=\"regexPromptName(this);\" type=\"text\"></input>" 
+					+"<input id=\"PromptName" + trId.value +"\" onkeyup=\"regexPromptName(this);\" type=\"text\"></input>" 
 				+"</td>"	
 				+"<td>"
 					+"<input id=\"idDescription\" onkeyup=\"regexDescription(this);\" type=\"text\"></input>" 
@@ -196,7 +202,7 @@ function regexPromptName(str) {
 }
 
 function regexDescription(str) {
-    var er = /[^A-Za-z.,!?"* ]/;
+    var er = /[^A-Za-z.,!?"*{} ]/;
 	er.lastIndex = 0;
 	var campo = str;
 

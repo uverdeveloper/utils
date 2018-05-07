@@ -59,7 +59,7 @@ function register(){
 				contentType : "application/json; charset=utf-8",
 				data : json,
 				success : function(result) {								
-					/*location.reload();*/
+					promptDescriptionLoad();
 				},
 				error : function(erro) {				
 					$("body").append(
